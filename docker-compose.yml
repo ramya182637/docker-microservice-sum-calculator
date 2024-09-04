@@ -1,0 +1,24 @@
+services:
+  container1:
+    image: ramyak1737/container1
+    ports:
+      - "6000:6000"
+    depends_on:
+      - container2
+    volumes:
+      - .:/data
+    networks:
+      - a1-network
+
+  container2:
+    image: ramyak1737/container2
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/data
+    networks:
+      - a1-network
+
+networks:
+  a1-network:
+    driver: bridge
